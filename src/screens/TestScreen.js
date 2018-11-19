@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
-import { StatusBar, StyleSheet, AsyncStorage, View, Button } from 'react-native';
+import { StatusBar, StyleSheet, View, Button } from 'react-native';
 
 export default class TestScreen extends Component {
 
-  displayData = async () => {
-    try {
-      let nameUser = await AsyncStorage.getItem('name');
-      alert(nameUser);
-    }
-
-    catch(error) {
-        alert(error);
-    }
-  }
+  
 
   render() {
     return (
@@ -23,7 +14,7 @@ export default class TestScreen extends Component {
           barStyle="light-content"
         />
 
-        <Button title="Get name" onPress={this.displayData}/>
+        <Button title="Get name"/>
       </View>
     );
   }

@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
-import { StatusBar, StyleSheet, TextInput, View, Button, AsyncStorage } from 'react-native';
+import { StatusBar, StyleSheet, TextInput, View, Button } from 'react-native';
 
 export default class DashboardScreen extends Component {
   constructor(props){
     super(props)
-    this.state = { name: ''}
     this.saveData = this.saveData.bind(this);
   }
     
-  saveData(){
-    let name = this.state.name;
-    AsyncStorage.setItem('name', name).done();
-    this.setState({ name: name });
+  saveData() {
+    let name = 'holamundo';
+    alert(name);
   }
-
+  
   render() {
     return (
       <View style={styles.container}>
@@ -22,12 +20,6 @@ export default class DashboardScreen extends Component {
           backgroundColor="#4f6d7a"
           barStyle="light-content"
         />
-
-        <TextInput
-          value={this.state.name}
-          onChangeText={(text) => this.setState({name: text})}
-          style={styles.input}
-          placeholder="Name" />
 
         <Button title="Save name" onPress={this.saveData}/>
         <Button title="Go to other screen" onPress={() => navigation.navigate('Settings')} />
